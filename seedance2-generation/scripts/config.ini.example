@@ -1,0 +1,27 @@
+; Seedance 2.0 CLI 配置文件示例
+; 复制此文件为 config.ini 并填入你的实际配置
+
+[API]
+; 火山引擎方舟 API 密钥
+; 获取地址: https://console.volcengine.com/ark/region:ark+cn-beijing/apikey
+ARK_API_KEY = your_ark_api_key_here
+
+[Settings]
+; 视频分辨率: 480p 或 720p
+RESOLUTION = 720p
+
+; 视频时长(秒): 4-15
+DURATION = 11
+
+; 默认模型: seedance-2-0 (高质量) 或 seedance-2-0-fast (快速)
+MODEL = seedance-2-0-fast
+
+[R2]
+; Cloudflare R2 视频上传配置
+; 用于上传参考视频到云端，供 Seedance API 使用
+
+; Worker URL - 你的 R2 Worker 地址
+WORKER_URL = https://your-worker.yourdomain.com
+
+; API Key - R2 访问密钥
+API_KEY = your_r2_api_key_here
