@@ -34,7 +34,7 @@ except ImportError:
 CONFIG_FILE = Path(__file__).parent / "config.ini"
 ARK_API_URL = "https://ark.cn-beijing.volces.com/api/v3"
 POLL_INTERVAL = 3  # seconds
-MAX_POLLS = 200
+MAX_POLLS = 1000
 
 # Default models
 MODELS = {
