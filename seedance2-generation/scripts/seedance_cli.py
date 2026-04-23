@@ -171,10 +171,11 @@ def image_to_base64(image_path: str) -> str:
     if img is None:
         raise ValueError(f"Cannot read image: {image_path}")
     
-    # Convert BGR to RGB
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    # OpenCV reads images in BGR format by default
+    # Keep BGR format as Seedance API expects this format
+    # Do NOT convert to RGB to avoid color inversion issues
     
-    # Encode as JPEG
+    # Encode as JPEG (keeping BGR format)
     _, buffer = cv2.imencode(".jpg", img)
     return base64.b64encode(buffer).decode("utf-8")
 
