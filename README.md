@@ -62,6 +62,31 @@ My-SKILL/
         └── seedance_cli.py   # 视频生成 CLI 工具
 ```
 
+## 安装方法
+
+### 方法 1：克隆整个仓库
+
+```bash
+git clone https://github.com/aGROWLz/My-SKILL.git
+```
+
+### 方法 2：只安装单个 Skill（推荐）
+
+如果你只需要其中一个 Skill，可以使用 `svn export` 精准下载，无需克隆整个仓库：
+
+```bash
+# 安装 seedance2-generation
+svn export https://github.com/aGROWLz/My-SKILL/trunk/seedance2-generation
+
+# 安装 feishu-chat-history
+svn export https://github.com/aGROWLz/My-SKILL/trunk/feishu-chat-history
+```
+
+**通用格式**：
+```bash
+svn export https://github.com/aGROWLz/My-SKILL/trunk/<skill-name>
+```
+
 ## 使用说明
 
 每个SKILL目录下都包含 `SKILL.md` 文件，详细说明了该技能的功能、配置方法和使用示例。
