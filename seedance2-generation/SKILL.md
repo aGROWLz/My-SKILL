@@ -35,6 +35,7 @@ ARK_API_KEY = 你的API密钥
 RESOLUTION = 720p
 DURATION = 11
 MODEL = seedance-2-0-fast
+RATIO = 16:9
 
 [R2]
 WORKER_URL = https://your-worker.yourdomain.com
@@ -56,7 +57,7 @@ python seedance_cli.py [选项]
 - `-v, --videos`: 视频文件路径（最多 3 个，空格分隔，自动上传）
 - `-r, --resolution`: 视频分辨率 (480p/720p，默认使用配置值)
 - `-d, --duration`: 视频时长秒数 (4-15，默认使用配置值)
-- `--ratio`: 宽高比 (16:9/9:16/1:1/4:3/3:4/21:9，默认: 16:9)
+- `--ratio`: 宽高比 (16:9/9:16/1:1/4:3/3:4/21:9，默认使用配置值)
 - `--generate-audio`: 生成音频（标志，默认: True）
 - `--no-generate-audio`: 禁用音频生成
 - `--model`: 使用模型 (seedance-2-0/seedance-2-0-fast，默认使用配置值)

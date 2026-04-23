@@ -16,6 +16,9 @@ DURATION = 11
 ; 默认模型: seedance-2-0 (高质量) 或 seedance-2-0-fast (快速)
 MODEL = seedance-2-0-fast
 
+; 默认宽高比: 16:9, 9:16, 1:1, 4:3, 3:4, 21:9
+RATIO = 16:9
+
 [R2]
 ; Cloudflare R2 视频上传配置
 ; 用于上传参考视频到云端，供 Seedance API 使用

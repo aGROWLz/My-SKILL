@@ -130,6 +130,23 @@ def setup_config_wizard():
         config["Settings"]["MODEL"] = model
         print(f"✓ Default model set to: {model}")
     
+    # Check if default ratio exists
+    ratio = config.get("Settings", "RATIO", fallback="")
+    if not ratio:
+        print()
+        print("Select default aspect ratio:")
+        print("  1. 16:9 (widescreen)")
+        print("  2. 9:16 (vertical/mobile)")
+        print("  3. 1:1 (square)")
+        print("  4. 4:3 (standard)")
+        print("  5. 3:4 (portrait)")
+        print("  6. 21:9 (ultrawide)")
+        choice = input("Enter choice (1-6) [1]: ").strip() or "1"
+        ratios = {"1": "16:9", "2": "9:16", "3": "1:1", "4": "4:3", "5": "3:4", "6": "21:9"}
+        ratio = ratios.get(choice, "16:9")
+        config["Settings"]["RATIO"] = ratio
+        print(f"✓ Default ratio set to: {ratio}")
+    
     # Save config
     save_config(config)
     print()
@@ -502,6 +519,7 @@ Examples:
     # Get default values from config if not provided
     resolution = args.resolution or config.get("Settings", "RESOLUTION", fallback="720p")
     duration = args.duration or config.getint("Settings", "DURATION", fallback=11)
+    ratio = args.ratio or config.get("Settings", "RATIO", fallback="16:9")
     
     # Get model from args or config, fallback to seedance-2-0-fast
     model_key = args.model or config.get("Settings", "MODEL", fallback="seedance-2-0-fast")
@@ -531,7 +549,7 @@ Examples:
         prompt=args.prompt,
         model=model_name,
         resolution=resolution,
-        ratio=args.ratio,
+        ratio=ratio,
         duration=duration,
         generate_audio=args.generate_audio,
         image_paths=valid_images,
