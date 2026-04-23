@@ -1,7 +1,8 @@
----
-name: "seedance-video"
+***
+
+name: "seedance-generation"
 description: "Seedance 2.0 视频生成 CLI 工具。当用户需要使用 Seedance 2.0 API 生成视频时调用，支持图片和音频参考。"
----
+-----------------------------------------------------------------------------------
 
 # Seedance 视频生成器
 
@@ -22,11 +23,13 @@ description: "Seedance 2.0 视频生成 CLI 工具。当用户需要使用 Seeda
 ## 安装
 
 1. 安装依赖：
+
 ```bash
 pip install 'volcengine-python-sdk[ark]' opencv-python numpy
 ```
 
-2. 首次运行时配置 API Key，或直接编辑 `scripts/config.ini`：
+1. 首次运行时配置 API Key，或直接编辑 `scripts/config.ini`：
+
 ```ini
 [API]
 ARK_API_KEY = 你的API密钥
@@ -81,11 +84,13 @@ python seedance_cli.py [选项]
 **重要**: 命令行中 `-i` 参数的图片按顺序对应 `@图像1` 到 `@图像9`，`-a` 参数的音频按顺序对应 `@音频1` 到 `@音频3`，`-v` 参数的视频按顺序对应 `@视频1` 到 `@视频3`。图片在前，音频在后，视频最后。
 
 **引用方式 1 - 前置描述**：
+
 ```
 根据 @图像1 中的人物形象，让 @图像1 的人物坐到 @图像2 的沙发上。声音参照 @音频1 的风格。
 ```
 
 **引用方式 2 - 后置标记**（更简洁）：
+
 ```
 穿红裙的女孩@图像1 拿起青苹果@图像2，放到木桌上@图像3
 ```
@@ -97,28 +102,33 @@ python seedance_cli.py [选项]
 **必须使用具体事物名称，禁止使用代称！**
 
 ❌ **禁止使用**（代称）：
+
 - 人称代词："他"、"她"、"ta"、"其"、"他们"
 - 指示代词："这"、"那"、"这个"、"那个"
 - 物主代词："它的"、"他的"、"她的"
 - 模糊指代："前者"、"后者"、"上述"
 
 ✅ **必须使用**（具体名称）：
+
 - 人物："女孩"、"男孩"、"老人"、"商人"、"@图像1 中的女性"
 - 物体："红苹果"、"木桌"、"玻璃杯"、"@图像2 中的沙发"
 - 动物："金毛犬"、"白猫"、"小鸟"
 - 场景："海边"、"森林"、"城市街道"
 
 **正确示例**：
+
 ```
 让 @图像1 中的穿红裙女孩拿起 @图像2 中的青苹果，放到 @图像2 中的木桌上。
 ```
 
 **后置标记正确示例**：
+
 ```
 穿红裙的女孩@图像1 拿起青苹果@图像2，放到木桌上@图像3
 ```
 
 **错误示例**：
+
 ```
 让她拿起它，放到那上面。（使用了"她"、"它"、"那"等代称）
 ```
@@ -153,6 +163,7 @@ python seedance_cli.py -p "我的视频" -o /path/to/output
 ## 输出目录
 
 生成的视频保存位置：
+
 - **默认**: `seedance2-generation/output/seedance_{时间戳}.mp4`
 - **自定义**: 通过 `-o` 选项指定
 
@@ -163,7 +174,8 @@ python seedance_cli.py -p "我的视频" -o /path/to/output
 ### 首次运行
 
 首次运行时会交互式询问以下配置：
-- **API Key** (ARK_API_KEY) - 从 https://console.volcengine.com/ark/region:ark+cn-beijing/apikey 获取
+
+- **API Key** (ARK\_API\_KEY) - 从 <https://console.volcengine.com/ark/region:ark+cn-beijing/apikey> 获取
 - **默认分辨率** (480p/720p)
 - **默认时长** (4-15 秒)
 - **默认模型** (seedance-2-0-fast / seedance-2-0)
@@ -171,11 +183,12 @@ python seedance_cli.py -p "我的视频" -o /path/to/output
 
 ### 配置保存
 
-**所有配置都会保存到 `scripts/config.ini` 文件中。**
+**所有配置都会保存到** **`scripts/config.ini`** **文件中。**
 
 ### 再次运行是否会重复询问？
 
 **不会。** 配置保存后，再次运行时会：
+
 1. 自动读取 `config.ini` 中的配置
 2. 直接使用已保存的默认值
 3. **不会**再次询问用户
@@ -220,35 +233,39 @@ python video_uploader.py /path/to/video.mp4
 
 ## 默认设置
 
-| 设置项 | 默认值 |
-|---------|---------------|
-| 水印 | 关闭 |
-| 音频生成 | 开启 |
-| 分辨率 | 720p（可配置） |
-| 时长 | 11 秒（可配置） |
-| 模型 | seedance-2-0-fast（可配置） |
-| 宽高比 | 16:9 |
-| 轮询间隔 | 3 秒 |
-| 最大轮询次数 | 200 次 |
+| 设置项    | 默认值                    |
+| ------ | ---------------------- |
+| 水印     | 关闭                     |
+| 音频生成   | 开启                     |
+| 分辨率    | 720p（可配置）              |
+| 时长     | 11 秒（可配置）              |
+| 模型     | seedance-2-0-fast（可配置） |
+| 宽高比    | 16:9                   |
+| 轮询间隔   | 3 秒                    |
+| 最大轮询次数 | 200 次                  |
 
 ## 系统要求
 
 - Python 3.8+
-- volcengine-python-sdk[ark]
+- volcengine-python-sdk\[ark]
 - OpenCV (cv2)
 - NumPy
 - requests（用于视频上传）
 
 ## 常见问题
 
-**错误：ARK_API_KEY not found**
+**错误：ARK\_API\_KEY not found**
+
 - 使用 `--setup` 标志运行以配置
 - 或手动编辑 `scripts/config.ini`
 
 **错误：Failed to create task**
+
 - 检查 API 密钥是否有效
 - 确认模型访问权限
 
 **任务超时**
+
 - 视频生成可能需要几分钟
 - 工具每 3 秒轮询一次，最多 200 次（最长 10 分钟）
+
