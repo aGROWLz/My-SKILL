@@ -1,0 +1,14 @@
+# 环境变量配置
+.env
+
+# 生成的图片
+generated_images/
+
+# Python 缓存
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE
+.vscode/
+.idea/
